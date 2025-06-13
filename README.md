@@ -37,7 +37,7 @@ De reads zijn gemapt met het `Rsubread-pakket` in R. Vervolgens zijn gen-express
 Pathway-analyses zijn uitgevoerd met het `KEGGREST- en pathview-pakket`. Daarnaast is een GO-enrichment analyse uitgevoerd met behulp van `Goseq`. Visualisaties zoals een volcano plot en GO-term bubble plot ondersteunen de resultaten.
 
 <p align="center">
-<img src="assets/Flowschema methode.png" alt="Flowschema methode" width="200"/>
+<img src="assets/Flowschema_methode.png" width="200"/>
 </p>
 
 Alle scripts zijn te vinden in de map `Scripts`, en gebruikte data en resultaten zijn beschikbaar in de map `Data`.
