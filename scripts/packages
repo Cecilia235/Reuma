@@ -1,0 +1,14 @@
+## Benodigde packages
+- Rsubread
+- BiocManager
+- Rsamtools
+- DESeq2
+- EnhancedVolcano
+- goseq
+- geneLenDataBase
+- org.Hs.eg.db
+- BiocParallel
+- dplyr
+- ggplot2
+- KEGGREST
+- pathview
