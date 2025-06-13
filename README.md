@@ -21,9 +21,10 @@
 
 ## Introductie
 
-Reumatoïde artritis (RA) is een auto-immuunziekte die wordt gekenmerkt door chronische ontstekingen in de gewrichten. Doormiddel van RNA-sequencing (transcriptomics) kan de genexpressie van RA-patiënten worden vergeleken met gezonde controlepersonen. Dit kan helpen bij het identificeren van genen en biologische processen die betrokken zijn bij het ziekteproces.
-In het project, wordt gebruik gemaakt van publicly beschikbare RNA-seq data van vier RA-patiënten en vier gezonde controles. Door de data te analyseren en visualiseren, wordt getracht, inzicht te krijgen in welke genen significant anders tot expressie komen bij RA en welke biologische pathways hierbij betrokken zijn.
-Het doel van het onderzoek is om differentieel tot expressie komende genen te identificeren die mogelijk een rol spelen in de pathogenese van RA. Daarnaast wordt gekeken naar betrokken GO-termen en KEGG-pathways om deze genen functioneel te duiden.
+Reumatoïde artritis (RA) is een systemische auto-immuunziekte die wordt gekenmerkt door chronische ontstekingen in de gewrichten, wat kan leiden tot gewrichtsschade, pijn en functieverlies (McInnes & Schett, 2011). Het ziekteproces wordt aangedreven door een complexe interactie van genetische, immunologische en omgevingsfactoren. Om meer inzicht te krijgen in de moleculaire mechanismen achter RA, is RNA-sequencing (RNA-seq) een waardevolle methode.
+RNA-sequencing is een krachtige techniek waarmee de genexpressie in cellen op grote schaal kan worden geanalyseerd (Wang et al., 2009). Door RNA-seq data van RA-patiënten te vergelijken met die van gezonde controlepersonen, kunnen genen worden geïdentificeerd die significant anders tot expressie komen. Dit helpt bij het ontdekken van mogelijke biomarkers en geeft inzicht in de biologische processen die betrokken zijn bij RA (Guo et al., 2018).
+In dit project wordt gebruik gemaakt van publiek beschikbare RNA-seq data van vier RA-patiënten en vier gezonde controles. Door deze data te analyseren en te visualiseren, wordt getracht inzicht te krijgen in welke genen betrokken zijn bij de pathogenese van RA en welke biologische processen hierbij mogelijk verstoord zijn.
+Het doel van dit project is om differentieel tot expressie komende genen te identificeren tussen RA-patiënten en gezonde controlepersonen. Daarnaast wordt onderzocht welke biologische processen, GO-termen en KEGG-pathways verrijkt zijn bij RA.
 
 
 ## Methode 
