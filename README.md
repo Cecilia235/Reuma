@@ -32,12 +32,15 @@ Het doel van dit project is om differentieel tot expressie komende genen te iden
 
 ## Methode 
 
+
 Voor deze analyse is RNA-seq data van vier reumatoïde artritis (RA) monsters en vier controle monsters gebruikt. De workflow bestond uit de volgende stappen: kwaliteitscontrole, mapping van de reads met het humane referentiegenoom, tellen van reads per gen, normaliseren en uitvoeren van differentiële expressieanalyse.
+
 De reads zijn gemapt met het `Rsubread-pakket` in R. Vervolgens zijn gen-expressie niveaus geteld met behulp van `featureCounts`. Voor de differentiële expressieanalyse is `DESeq2` toegepast, waarbij genen met een p-waarde < 0.05 en een log2 fold change > 1 als significant werden beschouwd. 
+
 Pathway-analyses zijn uitgevoerd met het `KEGGREST- en pathview-pakket`. Daarnaast is een GO-enrichment analyse uitgevoerd met behulp van `Goseq`. Visualisaties zoals een volcano plot en GO-term bubble plot ondersteunen de resultaten.
 
 <p align="center">
-<img src="Assets/Methode_flowschema.png" alt="Flowschema methode" width="700"/>
+<img src="Assets/ef3ed7c2-c79c-4e32-a5a9-6bc5f83341dd.png" alt="Flowschema methode" width="700"/>
 </p>
 
 Alle scripts zijn te vinden in de map `Scripts`, en gebruikte data en resultaten zijn beschikbaar in de map `Data`.
