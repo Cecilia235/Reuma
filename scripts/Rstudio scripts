@@ -1,0 +1,238 @@
+#Instellen working directory
+#Stel je working directory in.
+setwd("C:/Users/Cecil/OneDrive - NHL Stenden/Documents/Van Hall Larenstein/schooljaar 2/jaar 2 periode 4/het project/")
+#Je kan met het getwd() commando zien waar je bent. getwd() staat voor get working directory.
+getwd()
+# Vervang de bestandsnaam hieronder met je eigen zip-bestand
+#Hiermee worden de bestanden uitgepakt in een submap 
+unzip("Data_RA_raw.zip", exdir = "Reuma_data") 
+# Readmapping
+#installeer packages
+install.packages('BiocManager')
+BiocManager::install('Rsubread')
+library(Rsubread)
+browseVignettes('Rsubread')
+#Met de volgende code kun je het referentiegenoom indexeren.
+buildindex(
+  basename = 'ref_reuma',
+  reference = 'Homo_sapiens.GRCh38.dna.toplevel.fa.gz',
+  memory = 11000,
+  indexSplit = TRUE)
+
+
+getwd()
+
+# reuma monsters
+# Onderstaande code mapt het eerste reuma monster tegen het menselijk genoom.
+align.Norm1 <- align(index = "ref_reuma", readfile1 = "Reuma_data/Data_RA_raw/SRR4785819_1_subset40k.fastq",readfile2 = "Reuma_data/Data_RA_raw/SRR4785819_2_subset40k.fastq", output_file = "Norm1.BAM")
+align.Norm2 <- align(index = "ref_reuma", readfile1 = "Reuma_data/Data_RA_raw/SRR4785820_1_subset40k.fastq",readfile2 = "Reuma_data/Data_RA_raw/SRR4785820_2_subset40k.fastq", output_file = "Norm2.BAM")
+align.Norm3 <- align(index = "ref_reuma", readfile1 = "Reuma_data/Data_RA_raw/SRR4785828_1_subset40k.fastq",readfile2 = "Reuma_data/Data_RA_raw/SRR4785828_2_subset40k.fastq", output_file = "Norm3.BAM")
+align.Norm4 <- align(index = "ref_reuma", readfile1 = "Reuma_data/Data_RA_raw/SRR4785831_1_subset40k.fastq",readfile2 = "Reuma_data/Data_RA_raw/SRR4785831_2_subset40k.fastq", output_file = "Norm4.BAM")
+
+align.RA1 <- align(index = "ref_reuma", readfile1 = "Reuma_data/Data_RA_raw/SRR4785979_1_subset40k.fastq",readfile2 = "Reuma_data/Data_RA_raw/SRR4785979_2_subset40k.fastq", output_file = "RA1.BAM")
+align.RA2 <- align(index = "ref_reuma", readfile1 = "Reuma_data/Data_RA_raw/SRR4785980_1_subset40k.fastq",readfile2 = "Reuma_data/Data_RA_raw/SRR4785980_2_subset40k.fastq", output_file = "RA2.BAM")
+align.RA3 <- align(index = "ref_reuma", readfile1 = "Reuma_data/Data_RA_raw/SRR4785986_1_subset40k.fastq",readfile2 = "Reuma_data/Data_RA_raw/SRR4785986_2_subset40k.fastq", output_file = "RA3.BAM")
+align.RA4 <- align(index = "ref_reuma", readfile1 = "Reuma_data/Data_RA_raw/SRR4785988_1_subset40k.fastq",readfile2 = "Reuma_data/Data_RA_raw/SRR4785988_2_subset40k.fastq", output_file = "RA4.BAM")
+#BAM bestanden genereren
+#Wanneer je reads mapt tegen een referentiegenoom met align(), wordt er een BAM-bestand aangemaakt.
+#Dit doe je met het Rsamtools package:
+# Laad Rsamtools voor sorteren en indexeren
+library(Rsamtools)
+
+# Bestandsnamen van de monsters
+samples <- c('Norm1', 'Norm2', 'Norm3', 'Norm4', 'RA1', 'RA2', 'RA3', 'RA4')
+
+# dag 2: count matric
+#We gebruiken hiervoor het featureCounts() commando uit het Rsubread package.
+# benodigde packages
+library(readr)
+library(dplyr)
+library(Rsamtools)
+library(Rsubread)
+
+# Je definieert een vector met namen van BAM-bestanden. Elke BAM bevat reads van een RNA-seq-experiment (bijv. behandeld vs. controle).
+
+allsamples <- c("Norm1.BAM", "Norm2.BAM", "Norm3.BAM", "Norm4.BAM", "RA1.BAM", "RA2.BAM","RA3.BAM", "RA4.BAM")
+
+count_matrix <- featureCounts(
+  files = allsamples,
+  annot.ext = "Homo_sapiens.GRCh38.114 (1).gtf.gz",
+  isPairedEnd = TRUE,
+  isGTFAnnotationFile = TRUE,
+  GTF.attrType = "gene_id",
+  useMetaFeatures = TRUE
+)
+
+# data inladen van alle genen
+read.table("C:/Users/Cecil/OneDrive - NHL Stenden/Documents/Van Hall Larenstein/schooljaar 2/jaar 2 periode 4/het project/count_matrix.txt")
+Count.org <- read.table("C:/Users/Cecil/OneDrive - NHL Stenden/Documents/Van Hall Larenstein/schooljaar 2/jaar 2 periode 4/het project/count_matrix.txt")
+head(Count.org)
+
+
+#Dag 3: Statistiek en analyse
+#DESeq2-analyse
+#Lees het bestand uit werkcollege 2 in.
+head(Count.org)
+# Behandelingstabel maken
+treatment <- c("Normal", "Normal", "Normal","Normal", "RA", "RA", "RA", "RA")
+treatment_table <- data.frame(treatment)
+rownames(treatment_table) <- c("SRR4785819", "SRR4785820", "SRR4785828", "SRR4785831", "SRR4785979", "SRR4785980", "SRR4785986", "SRR4785988")
+# packages laden
+library(DESeq2)
+library(KEGGREST)
+BiocManager::install("DESeq2", force = TRUE)
+BiocManager::install("KEGGREST")
+# Statistiek 
+# check of er decimalen in je tabel zitten
+any(Count.org %% 1 != 0)
+# Maak DESeqDataSet aan
+dds <- DESeqDataSetFromMatrix(countData = round(Count.org),
+                              colData = treatment_table,
+                              design = ~ treatment)
+
+# Voer analyse uit
+dds <- DESeq(dds)
+resultaten <- results(dds)
+
+# Resultaten opslaan in een bestand
+write.csv(resultaten, 'ResultatenWC3.csv')
+#Bij het opslaan van je tabel kan je opnieuw je pad instellen met `setwd()` of het gehele pad waar je de tabel wilt opslaan opgeven in de code.
+setwd("C:/Users/Cecil/OneDrive - NHL Stenden/Documents/Van Hall Larenstein/schooljaar 2/jaar 2 periode 4/het project/")
+resultaten <- read.csv("ResultatenWC3.csv")
+rownames(resultaten) <- resultaten$X
+resultaten$X <- NULL
+# samenvatting sifinificaten genen
+# Stap 1: Hoeveel genen zijn er écht veranderd? Hier tellen we hoeveel genen er significant op- of neer-gereguleerd zijn.
+sum(resultaten$padj < 0.05 & resultaten$log2FoldChange > 1, na.rm = TRUE)
+#[1] 2085
+sum(resultaten$padj < 0.05 & resultaten$log2FoldChange < -1, na.rm = TRUE)
+#[1] 2487
+#Stap 2: Welke genen springen eruit? Nu sorteren we het resultaat om te kijken naar de opvallendste genen:
+hoogste_fold_change <- resultaten[order(resultaten$log2FoldChange, decreasing = TRUE), ]
+laagste_fold_change <- resultaten[order(resultaten$log2FoldChange, decreasing = FALSE), ]
+laagste_p_waarde <- resultaten[order(resultaten$padj, decreasing = FALSE), ]
+#Bekijk nu welke genen het belangrijkst zijn volgens de analyse.
+head(hoogste_fold_change)
+head(laagste_fold_change)
+head(laagste_p_waarde)
+# Visualisatie
+# Volcano Plot
+# Een volcano plot laat zien welke genen significant veranderen in expressie.
+# Op de x-as staat de log2 fold change en op de y-as de -log10 van de aangepaste p-waarde (padj).
+if (!requireNamespace("EnhancedVolcano", quietly = TRUE)) {
+  BiocManager::install("EnhancedVolcano")
+}
+library(EnhancedVolcano)
+
+EnhancedVolcano(resultaten,
+                lab = rownames(resultaten),
+                x = 'log2FoldChange',
+                y = 'padj')
+# We kunnen ook plots maken met een andere opmaak.
+# Alternatieve plot zonder p-waarde cutoff (alle genen zichtbaar)
+EnhancedVolcano(resultaten,
+                lab = rownames(resultaten),
+                x = 'log2FoldChange',
+                y = 'padj',
+                pCutoff = 0)
+# Sla het figuur op.
+dev.copy(png, 'VolcanoplotWC.png', 
+         width = 8,
+         height = 10,
+         units = 'in',
+         res = 500)
+dev.off()
+
+# GO enrichment using goseq
+
+library(goseq)
+library(geneLenDataBase)
+library(org.Dm.eg.db)
+BiocManager::install("goseq", force = TRUE)
+BiocManager::install("geneLenDataBase", force = TRUE)
+BiocManager::install("org.Dm.eg.db", force = TRUE)
+BiocManager::install("org.Hs.eg.db", force = TRUE)
+BiocManager::install("BiocParallel", force = TRUE)
+# INPUT FILE 1: ALL (contains all14869 genes)
+all <- rownames(resultaten)
+# INPUT FILE 2: DEG (contains the 76 genes that meet our fold change an p value cut offs)
+deg <- rownames(resultaten)[resultaten$padj < 0.05 & !is.na(resultaten$padj)]
+# Construeer een nieuwe vector die een 0 toevoegt naast elk gen dat niet in onze DEG-lijst staat en een 1 naast elk gen dat wel in onze DEG-lijst staat.
+gene.vector = as.integer(all%in%deg)
+names(gene.vector)= all 
+#lets explore this new vector a bit
+head(gene.vector)
+tail(gene.vector)
+# Weeg de genvector op basis van de lengte van onze genen.
+supportedOrganisms()
+pwf = nullp(gene.vector,"hg19","geneSymbol")
+# Vind verrijkte GO-termen
+GO.wall = goseq(pwf,"hg19","geneSymbol")
+# Hoeveel verrijkte GO-termen hebben we?
+class(GO.wall)
+head(GO.wall)
+nrow(GO.wall)
+# Vind alleen verrijkte GO-termen die statistisch significant zijn
+enriched.GO = GO.wall$category[GO.wall$over_represented_pvalue<.05]
+# Ze adviseren hier een strengere gecorrigeerde p-waarde voor meervoudige toetsing te gebruiken.
+# Hoeveel GO-termen hebben we nu?
+class(enriched.GO)
+head(enriched.GO)
+length(enriched.GO)
+# barplot van de top 10 GO-termen
+topGO <- head(GO.wall[GO.wall$category %in% enriched.GO, ][order(GO.wall$over_represented_pvalue), ], 10)
+
+
+# bubble plot met extra dimensie
+
+goResults <- goseq(pwf, "hg19","geneSymbol", test.cats=c("GO:BP"))
+
+
+library(dplyr)
+library(ggplot2)
+
+topGO %>%
+  mutate(hitsPerc = numDEInCat * 100 / numInCat,
+         log10_p = -log10(over_represented_pvalue)) %>%
+  arrange(over_represented_pvalue) %>%
+  slice(1:10) %>%
+  ggplot(aes(x = hitsPerc,
+             y = reorder(term, hitsPerc),
+             colour = log10_p,
+             size = numDEInCat)) +
+  geom_point(alpha = 0.8) +
+  scale_color_gradient(low = "red", high = "blue") +
+  scale_size(range = c(6, 10)) +
+  labs(title = "Top 10 verrijkte GO-termen",
+       x = "Hits (%)",
+       y = "GO-term",
+       colour = "-log10(p-waarde)",
+       size = "Aantal DE-genen") +
+  theme_minimal() +
+  theme(plot.title = element_text(hjust = 0.5))
+
+# KEGG Pathway-analyse
+# Installeer en laad het pathview pakket
+if (!requireNamespace("pathview", quietly = TRUE)) {
+  BiocManager::install("pathview")
+}
+
+BiocManager::install("pathview", force = TRUE)
+library(pathview)
+
+resultaten[1] <- NULL
+resultaten[2:5] <- NULL
+
+pathview(
+  gene.data = resultaten,
+  pathway.id = "hsa04620",  
+  species = "hsa",          
+  gene.idtype = "SYMBOL",     
+  limit = list(gene = 5))
+
+# Gen → Pathways
+keggLink("pathview", "hsa04620")
+
+# Pathway → Genen
+keggLink("hsa", "path:hsa04657")
+
