@@ -27,6 +27,7 @@ In dit project wordt gebruik gemaakt van publiek beschikbare RNA-seq data van vi
 Het doel van dit project is om differentieel tot expressie komende genen te identificeren tussen RA-patiënten en gezonde controlepersonen. Daarnaast wordt onderzocht welke biologische processen, GO-termen en KEGG-pathways verrijkt zijn bij RA.
 
 
+
 ## Methode 
 
 Voor deze analyse is RNA-seq data van vier reumatoïde artritis (RA) monsters en vier controle monsters gebruikt. De workflow bestond uit de volgende stappen: kwaliteitscontrole, mapping van de reads met het humane referentiegenoom, tellen van reads per gen, normaliseren en uitvoeren van differentiële expressieanalyse.
