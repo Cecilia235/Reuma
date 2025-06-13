@@ -9,8 +9,7 @@
 ## 📁 Inhoud/structuur
 
 
-- `data/raw/` – Ruwe data bestanden
-- `data/processed` - Bewerkt data-bestanden
+- `data/` – Ruwe data bestanden/bewerkte data bestanden
 - `scripts/` – Alle R-scripts (Rsubread, DESeq2, KEGG, GO)
 - `resultaten/` - Tabellen, grafieken, output
 - `bronnen/` - gebruikte bronnen 
