@@ -47,8 +47,11 @@ Alle scripts zijn te vinden in de map `Scripts`, en gebruikte data en resultaten
 
 
 De analyse resulteerde in een lijst van differentieel tot expressie komende genen. In totaal werden 2085 genen significant opgereguleerd en 2487 genen significant neerwaarts gereguleerd bij RA-patiënten ten opzichte van de controles. 
-De genen met de hoogste fold change en de laagste p-waarden zijn geselecteerd voor nadere analyse. Visualisatie met een volcano plot[Figuur 1](assets/Volcanoplot.png) toont een duidelijke scheiding tussen up- en down-gereguleerde genen.
+
+De genen met de hoogste fold change en de laagste p-waarden zijn geselecteerd voor nadere analyse. Visualisatie met een volcano plot [Figuur 1](assets/Volcanoplot.png). toont een duidelijke scheiding tussen up- en down-gereguleerde genen.
+
 Daarnaast werden met behulp van GO-enrichment analyse meerdere biologisch relevante processen geïdentificeerd. De top GO-termen hadden voornamelijk betrekking op immuunresponsen, inflammatoire processen en celadhesie [Figuur 2](assets/Top10verrijkteGO-termen.png).
+
 Met KEGG pathway-analyse werden pathways zoals het Toll-like receptor signaling pathway (hsa04620) significant geassocieerd met de differentieel tot expressie komende genen [Figuur 3](assets/hsa04620Toll-likereceptorsignalingpathway.png).
 
 De gebruikte plots en resultatenbestanden zijn beschikbaar in de map `Assets` en `Data`.
@@ -57,8 +60,11 @@ De gebruikte plots en resultatenbestanden zijn beschikbaar in de map `Assets` en
 ## Conclusie
 
 Uit de analyse blijkt dat er significante verschillen zijn in genexpressie tussen RA-patiënten en gezonde controles. Vooral genen die betrokken zijn bij immuunrespons en ontstekingsprocessen tonen een verhoogde expressie bij RA-patiënten. 
+
 De identificatie van relevante pathways, zoals het Toll-like receptor signaling pathway, bevestigt eerdere bevindingen over het belang van dit pad bij auto-immuunziekten. De verrijkte GO-termen ondersteunen de betrokkenheid van immuunprocessen in RA.
+
 Deze resultaten dragen bij aan een beter begrip van de moleculaire mechanismen van RA en kunnen mogelijk in de toekomst bijdragen aan het ontwikkelen van biomarkers of nieuwe therapieën.
+
 Voor vervolgonderzoek wordt aanbevolen om de dataset uit te breiden en validatie-experimenten uit te voeren op proteïneniveau om de biologische relevantie verder te onderbouwen.
 
 
