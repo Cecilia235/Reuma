@@ -48,8 +48,8 @@ Alle scripts zijn te vinden in de map `Scripts`, en gebruikte data en resultaten
 
 
 De analyse resulteerde in een lijst van differentieel tot expressie komende genen. In totaal werden 2085 genen significant opgereguleerd en 2487 genen significant neerwaarts gereguleerd bij RA-patiënten ten opzichte van de controles. 
-De genen met de hoogste fold change en de laagste p-waarden zijn geselecteerd voor nadere analyse. Visualisatie met een volcano plot[Figuur 1]() toont een duidelijke scheiding tussen up- en down-gereguleerde genen (zie Figuur 1).
-Daarnaast werden met behulp van GO-enrichment analyse meerdere biologisch relevante processen geïdentificeerd. De top GO-termen hadden voornamelijk betrekking op immuunresponsen, inflammatoire processen en celadhesie.
+De genen met de hoogste fold change en de laagste p-waarden zijn geselecteerd voor nadere analyse. Visualisatie met een volcano plot[Figuur 1](assets/Volcanoplot.png) toont een duidelijke scheiding tussen up- en down-gereguleerde genen.
+Daarnaast werden met behulp van GO-enrichment analyse meerdere biologisch relevante processen geïdentificeerd. De top GO-termen hadden voornamelijk betrekking op immuunresponsen, inflammatoire processen en celadhesie [Figuur 2]().
 Met KEGG pathway-analyse werden pathways zoals het Toll-like receptor signaling pathway (hsa04620) significant geassocieerd met de differentieel tot expressie komende genen.
 
 De gebruikte plots en resultatenbestanden zijn beschikbaar in de map `Assets` en `Data`.
