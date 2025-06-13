@@ -52,7 +52,7 @@ De genen met de hoogste fold change en de laagste p-waarden zijn geselecteerd vo
 
 Daarnaast werden met behulp van GO-enrichment analyse meerdere biologisch relevante processen geïdentificeerd. De top GO-termen hadden voornamelijk betrekking op immuunresponsen, inflammatoire processen en celadhesie [Figuur 2](assets/Top_10_verrijkte_GO-termen.png).
 
-Met KEGG pathway-analyse werden pathways zoals het Toll-like receptor signaling pathway (hsa04620) significant geassocieerd met de differentieel tot expressie komende genen [Figuur 3]().
+Met KEGG pathway-analyse werden pathways zoals het Toll-like receptor signaling pathway (hsa04620) significant geassocieerd met de differentieel tot expressie komende genen [Figuur 3](assets/hsa04620_Toll-like_receptor_signaling_pathway.png).
 
 De gebruikte plots en resultatenbestanden zijn beschikbaar in de map `Assets` en `Data`.
 
