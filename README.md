@@ -50,9 +50,9 @@ De analyse resulteerde in een lijst van differentieel tot expressie komende gene
 
 De genen met de hoogste fold change en de laagste p-waarden zijn geselecteerd voor nadere analyse. Visualisatie met een volcano plot [Figuur 1](assets/Volcanoplot.png). toont een duidelijke scheiding tussen up- en down-gereguleerde genen.
 
-Daarnaast werden met behulp van GO-enrichment analyse meerdere biologisch relevante processen geïdentificeerd. De top GO-termen hadden voornamelijk betrekking op immuunresponsen, inflammatoire processen en celadhesie [Figuur 2](assets/Top 10 verrijkte GO-termen.png).
+Daarnaast werden met behulp van GO-enrichment analyse meerdere biologisch relevante processen geïdentificeerd. De top GO-termen hadden voornamelijk betrekking op immuunresponsen, inflammatoire processen en celadhesie [Figuur 2](assets/Top_10_verrijkte_GO-termen.png).
 
-Met KEGG pathway-analyse werden pathways zoals het Toll-like receptor signaling pathway (hsa04620) significant geassocieerd met de differentieel tot expressie komende genen [Figuur 3](assets/hsa04620Toll-likereceptorsignalingpathway.png).
+Met KEGG pathway-analyse werden pathways zoals het Toll-like receptor signaling pathway (hsa04620) significant geassocieerd met de differentieel tot expressie komende genen [Figuur 3]().
 
 De gebruikte plots en resultatenbestanden zijn beschikbaar in de map `Assets` en `Data`.
 
