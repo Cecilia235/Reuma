@@ -3,11 +3,10 @@
 Tijdens dit project heb ik GitHub gebruikt om mijn projectbestanden gestructureerd te beheren en om te zorgen voor een overzichtelijke en reproduceerbare workflow. GitHub heeft ervoor gezorgd dat mijn scripts, data en resultaten goed vindbaar zijn en dat anderen mijn project eenvoudig kunnen begrijpen en herhalen.
 Structuur en Vindbaarheid
 In mijn GitHub repository heb ik een duidelijke mappenstructuur gebruikt:
-•	/Data_RAW: bevat de ruwe data en de uitgepakte bestanden uit de zip-bestanden.
+•	/Data: bevat de ruwe data en de uitgepakte bestanden uit de zip-bestanden.
 •	/Scripts: bevat alle gebruikte R-scripts, inclusief het script voor het uitpakken van bestanden, het mappen van reads, het genereren van BAM-bestanden, de tellingen en de DESeq2-analyse.
-•	/Resultaten: hierin staan de outputbestanden, waaronder de resultaten van de DESeq2-analyse en de volcano plot.
-•	/Documentatie: bevat de README en uitleg over het gebruik van GitHub en Data Stewardship.
-•	/Afbeeldingen: hierin zijn de gemaakte figuren, zoals de volcano plot, opgeslagen.
+•	/Data Stewardship: uitleg over het gebruik van GitHub en Data Stewardship.
+•	/Assets: hierin zijn de gemaakte figuren, zoals de volcano plot, opgeslagen.
 Deze structuur zorgt ervoor dat data, scripts en resultaten logisch gescheiden zijn en dat het makkelijk is om specifieke onderdelen terug te vinden.
 Bestandsnamen en Versiebeheer
 Voor de bestandsnamen heb ik een duidelijke en consequente naamgeving gebruikt, bijvoorbeeld:
