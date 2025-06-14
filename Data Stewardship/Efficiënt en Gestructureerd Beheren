@@ -6,20 +6,19 @@ Een goede manier van data beheren is essentieel in onderzoek om reproduceerbaarh
 
 Wat is een duidelijke mappenstructuur en waarom houd je dat aan?
 Een duidelijke mappenstructuur zorgt ervoor dat bestanden logisch en overzichtelijk zijn opgeslagen. In dit project werk ik bijvoorbeeld met aparte mappen voor:
-•	Data_raw: onbewerkte data
-•	Data_processed: verwerkte data
+•	Data: onbewerkte data / verwerkte data
 •	Scripts: gebruikte codes
-•	Output: grafieken, resultaten en tabellen
+•	Assets: grafieken, resultaten en tabellen
 Door deze structuur te volgen, is het direct duidelijk waar informatie te vinden is, wat de kans op verwarring of verlies van data minimaliseert.
 
 Wat is een handige manier voor de naamgeving van bestanden en waarom?
 Bestandsnamen moeten duidelijk, kort en gestructureerd zijn. Bijvoorbeeld: count_matrix_day3.csv of volcano_plot_wc3.png.
 •	Dit voorkomt dubbele bestanden en verwarring.
 •	Het maakt snel duidelijk wat de inhoud is.
-•	Door consistente naamgeving (bijvoorbeeld altijd project_onderdeel_datum) blijft alles logisch en makkelijk terug te vinden.
+•	Door consistente naamgeving blijft alles logisch en makkelijk terug te vinden.
 
 Wat houdt versiebeheer in en waarom doe je dit?
-Versiebeheer betekent dat je bijhoudt welke wijzigingen zijn gemaakt in bestanden en scripts, bijvoorbeeld met behulp van Git en GitHub. Dit is belangrijk omdat:
+Versiebeheer betekent dat je bijhoudt welke wijzigingen zijn gemaakt in bestanden en scripts, bijvoorbeeld met behulp van GitHub. Dit is belangrijk omdat:
 •	Je kunt altijd terug naar een vorige versie.
 •	Je kunt goed samenwerken met anderen zonder bestanden te overschrijven.
 •	Het maakt de ontwikkeling van je project inzichtelijk voor anderen.
