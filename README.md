@@ -1,6 +1,6 @@
 
 <p align="center">
-<img src="C:\Users\Cecil\OneDrive\Documents\A Van Hall Larenstein\schooljaar 2\jaar 2 periode 4\het project\rheumatoid-arthritis-color-icon-illustration-vector.jpg" alt="Reuma Logo" width="600"/>
+<img src="assets/rheumatoid-arthritis-color-icon-illustration-vector (1).jpg" alt="Reuma Logo" width="600"/>
 </p>
 
 # Transcriptomics Casus – Reumatoïde Artritis (RA)
