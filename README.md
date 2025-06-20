@@ -30,11 +30,11 @@ Het doel van dit project is om differentieel tot expressie komende genen te iden
 ## Methode 
 
 
-Voor deze analyse is RNA-seq data van vier reumatoïde artritis (RA) monsters en vier controle monsters gebruikt. De workflow bestond uit de volgende stappen: kwaliteitscontrole, mapping van de reads met het humane referentiegenoom, tellen van reads per gen, normaliseren en uitvoeren van differentiële expressieanalyse.
+In dit project is RNA-sequencing data van vier reumatoïde artritis (RA) patiënten en vier gezonde controles geanalyseerd. Eerst is de werkdirectory ingesteld en zijn de FASTQ-bestanden uitgepakt. Vervolgens zijn de reads gemapt op een referentiegenoom, dat vooraf is geïndexeerd met behulp van buildindex(). De gemapte reads zijn opgeslagen als BAM-bestanden, die gesorteerd en geïndexeerd zijn voor verdere verwerking.
 
-De reads zijn gemapt met het `Rsubread-pakket` in R. Vervolgens zijn gen-expressie niveaus geteld met behulp van `featureCounts`. Voor de differentiële expressieanalyse is `DESeq2` toegepast, waarbij genen met een p-waarde < 0.05 en een log2 fold change > 1 als significant werden beschouwd. 
+Met featureCounts() zijn de reads per gen geteld en is een count matrix gegenereerd. Deze matrix is ingelezen in R voor differentiële expressie-analyse met DESeq2. Een behandelgroep (RA of controle) is toegevoegd, waarna de data is gecontroleerd op gehele waarden. De DESeq2-analyse is uitgevoerd om genen te identificeren die significant verschillend tot expressie komen. De resultaten zijn opgeslagen als CSV-bestand.
 
-Pathway-analyses zijn uitgevoerd met het `KEGGREST- en pathview-pakket`. Daarnaast is een GO-enrichment analyse uitgevoerd met behulp van `Goseq`. Visualisaties zoals een volcano plot en GO-term bubble plot ondersteunen de resultaten.
+Vervolgens is het aantal significante genen bepaald en zijn de genen gesorteerd op log-fold-change en p-waarde. Ter visualisatie is een volcano plot gemaakt en opgeslagen als PNG-bestand. Daarna is een GO-enrichmentanalyse uitgevoerd met genlengtecorrectie via nullp() en verrijking via goseq(). De top 10 GO-termen zijn weergegeven in een bubble plot. Tot slot is een KEGG-pathwayanalyse uitgevoerd met pathview en zijn gen-pathway koppelingen onderzocht met 'keggLink()'
 
 <p align="center">
 <img src="assets/Flowschema_methode.png" width="200"/>
